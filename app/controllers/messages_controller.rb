@@ -45,7 +45,8 @@ class MessagesController < ApplicationController
     username = {'username' => current_user.username}
     json = @message.as_json
     json = json.merge(username)
-    $redis.publish('messages.create', json.to_json)
+    redis = Redis.new
+    redis.publish('messages.create', json.to_json)
     render nothing: true
   end
 
