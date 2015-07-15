@@ -6,20 +6,17 @@ class MessagesController < ApplicationController
   def events
     response.headers["Content-Type"] = "text/event-stream"
     start = Time.zone.now
-    10.times do |n|
-      Message.uncached do
-        Message.where('created_at > ?', start).each do |message|
-          # binding.pry
-          response.stream.write "data: #{message.to_json}\n\n"
-          start = Time.zone.now
-        end
+    redis = Redis.new
+    redis.subscribe('messages.create') do |on|
+      on.message do |event, data|
+        response.stream.write("data: #{data }\n\n")
       end
-      sleep 2
     end
 
     rescue IOError
     logger.info "Stream closed"
     ensure
+    redis.quit
     response.stream.close
   end
 
@@ -43,8 +40,9 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.create(message_params)
-    render :index
+    @message = Message.create!(message_params)
+    $redis.publish('messages.create', @message.to_json)
+    render nothing: true
   end
 
   # PATCH/PUT /messages/1
