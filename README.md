@@ -1,3 +1,20 @@
+as a user i want to make and account
+ - log in
+ - log out
+
+as admin I want to edit users
+  - make new admin
+  - ban users
+
+as user I want to chat with everyone
+  - chat with one person
+
+
+
+
+
+
+
 ## APP NAME
 
 <a href="APP LINK IF APPLICABLE" target="#"><APP LINK NAME></a>
@@ -77,7 +94,7 @@ Copyright  (C)  2015  Ian C. MacDonald
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or    
+the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
