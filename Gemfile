@@ -15,6 +15,7 @@ gem 'devise'
 gem 'paperclip'
 # gem 'omniauth-twitter'
 gem 'figaro'
+gem 'puma'
 
 group :production do
   gem 'rails_12factor'

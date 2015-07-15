@@ -1,7 +1,3 @@
-as a user i want to make and account
- - log in
- - log out
-
 as admin I want to edit users
   - make new admin
   - ban users

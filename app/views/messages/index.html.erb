@@ -1,0 +1,14 @@
+<h1>HumanTouch™</h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="chat-box">
+  <ul id="chat">
+  </ul>
+</div>
+
+<%= bootstrap_form_for Message.new, remote: true do |f| %>
+  <%= f.text_field :body %>
+  <%= f.submit %>
+<% end %>
+<br>
