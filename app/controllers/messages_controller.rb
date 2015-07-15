@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
 
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
+
   def events
     response.headers["Content-Type"] = "text/event-stream"
     start = Time.zone.now

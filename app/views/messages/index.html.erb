@@ -7,8 +7,11 @@
   </ul>
 </div>
 
-<%= simple_form_for Message.new, remote: true do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
+<% if user_signed_in? %>
+  <%= simple_form_for Message.new, remote: true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit %>
+  <% end %>
+
 <% end %>
 <br>
