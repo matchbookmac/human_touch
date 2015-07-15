@@ -40,8 +40,11 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.create!(message_params)
-    $redis.publish('messages.create', @message.to_json)
+    @message = current_user.messages.create!(message_params)
+    username = {'username' => current_user.username}
+    json = @message.as_json
+    json = json.merge(username)
+    $redis.publish('messages.create', json.to_json)
     render nothing: true
   end
 

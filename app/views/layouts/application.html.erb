@@ -8,18 +8,24 @@
   </head>
   <body>
 
-    <div id="user_nav">
+    <div id="user_nav" class="user-nav">
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <span class="muted">Logged in as <strong><%= current_user.email %></strong>.</span>
+        <span class="pull-right">
+          <%= link_to 'Edit profile', edit_user_registration_path %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        </span>
       <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
+        <span class="pull-right">
+          <%= link_to "Sign up", new_user_registration_path %> |
+          <%= link_to "Login", new_user_session_path %>
+        </span>
       <% end %>
     </div>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
   </body>
 </html>

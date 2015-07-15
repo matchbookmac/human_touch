@@ -15,6 +15,21 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.user-nav {
+  border-style: none none solid none;
+  border-width: 0 0 1px 0;
+}
+
 .muted {
   opacity: 0.5;
+}
+
+input[type=text] {
+  border-style: none none solid none;
+  border-width: 0 0 1px 0;
+}
+
+input[type=text]:focus {
+  outline: none;
+  box-shadow: 0 0 -1px 0 #000;
 }

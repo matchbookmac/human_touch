@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  has_many :messages
+
   validates :username,
     :presence => true,
     :uniqueness => {

@@ -7,7 +7,7 @@
   </ul>
 </div>
 
-<%= bootstrap_form_for Message.new, remote: true do |f| %>
+<%= simple_form_for Message.new, remote: true do |f| %>
   <%= f.text_field :body %>
   <%= f.submit %>
 <% end %>
