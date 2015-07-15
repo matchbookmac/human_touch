@@ -21,6 +21,14 @@
   color: white;
 }
 
+.user-nav span a {
+  color: white;
+}
+
+.user-nav span a:focus {
+  color: black;
+}
+
 .muted {
   opacity: 0.5;
 }
