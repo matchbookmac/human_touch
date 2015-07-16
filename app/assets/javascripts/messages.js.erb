@@ -6,7 +6,7 @@ var message;
 source.addEventListener('message', function(e) {
   message = $.parseJSON(e.data).body;
   user = $.parseJSON(e.data).username;
-  $('#chat').prepend($("<li>" + user + ": " + message + "</li>"));
+  $('#chat').prepend($("<li><strong>" + user + ":</strong> " + message + "</li>"));
   if(user === localStorage.getItem('username-human-touch')) {
     $('#chat-field').val('');
   }

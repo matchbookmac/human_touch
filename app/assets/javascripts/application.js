@@ -17,6 +17,8 @@
 //= require_tree .
 
 $(function () {
+  resizeChatBox();
+
   if(localStorage.getItem('username-human-touch') === null) {
     localStorage.setItem('username-human-touch', $('#new_username').text())
   } else {
@@ -26,4 +28,16 @@ $(function () {
   // $("#new_message").submit(function (e) {
   //   $('#chat-field').delay(100).val('');
   // })
+
+  $(window).on('resize', function() {
+    resizeChatBox();
+  });
 });
+
+function resizeChatBox() {
+  var height = window.innerHeight;
+  $('.chat-box').css('height', height-150 );
+  $('.chat-box ul').css('height', height-150 );
+  // $('tr.mark-area').css('height', width/3 );
+  // $('td.mark-area').css('line-height', (width/3 -25) + 'px');
+};

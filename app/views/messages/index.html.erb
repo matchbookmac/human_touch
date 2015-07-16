@@ -1,18 +1,22 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<%= simple_form_for Message.new, remote: true do |f| %>
-  <%= f.hidden_field :username, value: @new_username, id: "current_user" %>
-  <%= f.text_field :body, autofocus: true, id: 'chat-field' %>
-  <%= f.submit style: "display: none" %>
-<% end %>
+<div class="col-md-12">
+  <%= simple_form_for Message.new, remote: true do |f| %>
+    <%= f.hidden_field :username, value: @new_username, id: "current_user" %>
+    <%= f.text_field :body, autofocus: true, id: 'chat-field' %>
+    <%= f.submit style: "display: none" %>
+  <% end %>
+</div>
+<br><br><br>
 
-<br>
-
-<div class="chat-box">
+<div class="col-md-12 chat-box">
   <ul id="chat" class="list-unstyled">
+    <% if Message.all.any? %>
+      <% Message.all.reverse_order.each do |m| %>
+        <li><strong><%=h m.username %>:</strong> <%=h m.body %></li>
+      <% end %>
+    <% end %>
   </ul>
 </div>
 
