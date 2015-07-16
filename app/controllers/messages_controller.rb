@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     response.headers["Content-Type"] = "text/event-stream"
     start = Time.zone.now
     redis = Redis.new
-    redis.subscribe('messages.create') do |on|
+    REDIS.subscribe('messages.create') do |on|
       on.message do |event, data|
         response.stream.write("data: #{data }\n\n")
       end
@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
     json = @message.as_json
     json = json.merge(username)
     redis = Redis.new
-    redis.publish('messages.create', json.to_json)
+    REDIS.publish('messages.create', json.to_json)
     render nothing: true
   end
 
