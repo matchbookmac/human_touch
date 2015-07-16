@@ -1,3 +1,9 @@
 <script>alert('Hello');</script>
 
 <h1>HI HI HI</h1>
+
+<% if Message.all.any? %>
+  <% Message.all.reverse_order.each do |m| %>
+    <li><strong><%=h m.username %>:</strong> <%=h m.body %></li>
+  <% end %>
+<% end %>

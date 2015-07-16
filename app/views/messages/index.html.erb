@@ -12,11 +12,6 @@
 
 <div class="col-md-12 chat-box">
   <ul id="chat" class="list-unstyled">
-    <% if Message.all.any? %>
-      <% Message.all.reverse_order.each do |m| %>
-        <li><strong><%=h m.username %>:</strong> <%=h m.body %></li>
-      <% end %>
-    <% end %>
   </ul>
 </div>
 
