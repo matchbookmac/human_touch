@@ -19,6 +19,8 @@
 $(function () {
   if(localStorage.getItem('username-human-touch') === null) {
     localStorage.setItem('username-human-touch', $('#new_username').text())
+  } else {
+    $('#current_user').val(localStorage.getItem('username-human-touch'));
   }
   $('#new_username').remove();
 });

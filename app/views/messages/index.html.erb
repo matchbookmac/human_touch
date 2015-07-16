@@ -4,6 +4,7 @@
 <br>
 <br>
 <%= simple_form_for Message.new, remote: true do |f| %>
+  <%= f.hidden_field :username, value: @new_username, id: "current_user" %>
   <%= f.text_field :body, autofocus: true, id: 'chat-field' %>
   <%= f.submit style: "display: none" %>
 <% end %>
