@@ -23,4 +23,7 @@ $(function () {
     $('#current_user').val(localStorage.getItem('username-human-touch'));
   }
   $('#new_username').remove();
+  // $("#new_message").submit(function (e) {
+  //   $('#chat-field').delay(100).val('');
+  // })
 });

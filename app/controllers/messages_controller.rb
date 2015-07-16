@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   include ActionController::Live
+  include ActionView::Helpers::SanitizeHelper
 
   def events
     response.headers["Content-Type"] = "text/event-stream"
@@ -27,6 +28,8 @@ class MessagesController < ApplicationController
   # POST /messages
   def create
     @message = Message.create!(message_params)
+    tags = %w(a acronym b strong i em li ul ol h1 h2 h3 h4 h5 h6 blockquote br cite sub sup ins p)
+    @message.body = sanitize(@message.body, tags: tags, attributes: %w(href title))
     $redis.publish('messages.create', @message.to_json)
     render nothing: true
   end
