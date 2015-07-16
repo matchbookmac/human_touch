@@ -3,16 +3,16 @@ class MessagesController < ApplicationController
 
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-
   def events
     response.headers["Content-Type"] = "text/event-stream"
-    start = Time.zone.now
     redis = Redis.new
-    REDIS.subscribe('messages.create') do |on|
+    redis.subscribe('messages.create') do |on|
       on.message do |event, data|
         response.stream.write("data: #{data }\n\n")
       end
     end
+
+    sleep 2
 
     rescue IOError
     logger.info "Stream closed"
@@ -45,8 +45,8 @@ class MessagesController < ApplicationController
     username = {'username' => current_user.username}
     json = @message.as_json
     json = json.merge(username)
-    redis = Redis.new
-    REDIS.publish('messages.create', json.to_json)
+# binding.pry
+    $redis.publish('messages.create', json.to_json)
     render nothing: true
   end
 
