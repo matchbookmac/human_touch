@@ -5,14 +5,15 @@ class MessagesController < ApplicationController
 
   def events
     response.headers["Content-Type"] = "text/event-stream"
-    redis = Redis.new
+    uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/")
+    redis = Redis.new(:url => uri)
+
     redis.subscribe('messages.create') do |on|
       on.message do |event, data|
         response.stream.write("data: #{data }\n\n")
       end
     end
 
-    sleep 2
 
     rescue IOError
     logger.info "Stream closed"
