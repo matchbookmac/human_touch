@@ -15,3 +15,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function () {
+  if(localStorage.getItem('username-human-touch') === null) {
+    localStorage.setItem('username-human-touch', $('#new_username').text())
+  }
+  $('#new_username').remove();
+});

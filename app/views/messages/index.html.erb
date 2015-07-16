@@ -1,17 +1,20 @@
-
-
-<p id="notice"><%= notice %></p>
-
-<% if user_signed_in? %>
-  <%= simple_form_for Message.new, remote: true do |f| %>
-    <%= f.text_field :body, autofocus: true %>
-    <%= f.submit style: "display: none" %>
-  <% end %>
-<% end %>
 <br>
+<br>
+<br>
+<br>
+<br>
+<%= simple_form_for Message.new, remote: true do |f| %>
+  <%= f.text_field :body, autofocus: true, id: 'chat-field' %>
+  <%= f.submit style: "display: none" %>
+<% end %>
+
+<br>
+
 <div class="chat-box">
   <ul id="chat" class="list-unstyled">
   </ul>
 </div>
+
+<span id='new_username'> <%= @new_username %> </span>
 
 <br>

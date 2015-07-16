@@ -12,12 +12,12 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '>= 3.2'
 gem 'bootstrap_form'
 gem 'simple_form'
-gem 'devise'
 gem 'paperclip'
 # gem 'omniauth-twitter'
 gem 'figaro'
 gem 'puma'
 gem 'redis'
+gem "random_username"
 
 group :production do
   gem 'rails_12factor'

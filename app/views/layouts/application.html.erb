@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HumanTouch</title>
+    <title>HumanTouch™</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-    <div id="user_nav" class="user-nav">
-      <% if user_signed_in? %>
-        <span class="muted">Logged in as <strong><%= current_user.email %></strong>.</span>
-        <span>HumanTouch™</span>
-        <span class="pull-right">
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        </span>
-      <% else %>
-        <span class="pull-right">
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Login", new_user_session_path %>
-        </span>
-      <% end %>
-    </div>
 
     <div class="container">
       <%= yield %>
